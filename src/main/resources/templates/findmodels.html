@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>CarMart</title>
+    <style>
+        body {
+            background-color: #34495E;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 20px;
+            color: white;
+        }
+
+        table {
+            width: 80%;
+            margin: 0 auto;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            border: 1px solid black;
+            text-align: center;
+            padding: 10px;
+            color: white;
+        }
+
+        th {
+            background-color: #5D7B9D;
+            color: white;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+            gap: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            background-color: #5D7B9D;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: darkblue;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>CarMart</h1>
+    <h3>Choose a car to buy</h3>
+</header>
+
+<!-- Table displaying car details -->
+<form th:action="@{/bookcar}" method="post">
+    <table>
+        <thead>
+        <tr>
+            <th>Select</th>
+            <th>Brand</th>
+            <th>Model</th>
+            <th>Year</th>
+            <th>No. of Kms</th>
+            <th>Price</th>
+            <th>Fuel</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- Iterate through car list -->
+        <tr th:each="cars : ${carList}">
+            <td>
+                <input type="radio" name="selectedCar" th:value="${cars.id}" required />
+            </td>
+            <td th:text="${cars.brand}"></td>
+            <td th:text="${cars.model}"></td>
+            <td th:text="${cars.caryear}"></td>
+            <td th:text="${cars.noofkms}"></td>
+            <td th:text="${cars.price}"></td>
+            <td th:text="${cars.fuel}"></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!-- Hidden fields for brand and model -->
+    <input type="hidden" name="brand" id="brand" />
+    <input type="hidden" name="model" id="model" />
+
+    <!-- Button Section -->
+    <div class="button-container">
+        <button type="submit">Book Car</button>
+        <button type="button" th:attr="onclick='window.location.href=\'' + ${backbutton} + '\''">Back</button>
+        <button type="button" onclick="window.location.href='/customer_homepage'">Home</button>
+    </div>
+</form>
+
+<script>
+    // Add event listener for the radio button to update hidden fields when a car is selected
+    document.querySelectorAll('input[name="selectedCar"]').forEach(function(radioButton) {
+        radioButton.addEventListener('change', function() {
+            // Get the selected car data
+            var selectedCar = radioButton.closest('tr');
+            var brand = selectedCar.querySelector('td:nth-child(2)').textContent.trim();
+            var model = selectedCar.querySelector('td:nth-child(3)').textContent.trim();
+
+            // Set the values of the hidden inputs
+            document.getElementById('brand').value = brand;
+            document.getElementById('model').value = model;
+        });
+    });
+</script>
+</body>
+</html>

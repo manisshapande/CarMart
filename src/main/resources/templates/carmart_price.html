@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>CarMart</title>
+    <style>
+        body {
+            background-color: #34495E;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+
+        h1 {
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        .container {
+            background-color: #34495E;
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+            color: white;
+        }
+
+        label {
+            display: block;
+            margin: 10px 0;
+        }
+
+        button {
+            margin: 10px 5px;
+            padding: 8px 12px;
+            font-size: 14px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        #find-button {
+            background-color: #5D7B9D;
+            color: white;
+        }
+
+        #back-button {
+            background-color: #5D7B9D;
+            color: white;
+        }
+
+        button:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+<h1>CarMart</h1>
+<div class="container">
+    <form id="carForm" action="/findprice" method="post">
+        <h2>Choose price range to find available cars</h2>
+        <label>
+            <input type="radio" name="priceRange" value="< 5 lakhs" onclick="setHiddenParam('lesser')" /> < 5 lakhs
+        </label>
+        <label>
+            <input type="radio" name="priceRange" value="> 5 lakhs" onclick="setHiddenParam('greater')" /> > 5 lakhs
+        </label>
+
+        <!-- Hidden input to send the range type as "greater" or "lesser" -->
+        <input type="hidden" id="hiddenPriceRange" name="priceRangeHidden" value="" />
+
+
+        <div>
+            <button type="button" id="find-button" onclick="validateAndSubmit()">Find Your Car</button>
+            <button type="button" id="back-button" onclick="window.location.href = '/customer_homepage'">Back</button>
+        </div>
+    </form>
+</div>
+
+<script>
+    // This function will set the value of the hidden input based on the selected price range
+    function setHiddenParam(value) {
+        document.getElementById('hiddenPriceRange').value = value;
+    }
+
+    // Validate that a radio button is selected before submission
+    function validateAndSubmit() {
+        const selectedOption = document.querySelector('input[name="priceRange"]:checked');
+        if (!selectedOption) {
+            alert("Please select a price range to proceed.");
+        } else {
+            // Submit the form after setting the hidden field value
+            document.getElementById("carForm").submit();
+        }
+    }
+</script>
+</body>
+</html>

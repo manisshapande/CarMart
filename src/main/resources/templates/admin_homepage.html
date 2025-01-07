@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Carmart</title>
+    <style>
+        /* Center header styling */
+        .center-header {
+            text-align: center; /* Align text to the center */
+            padding: 20px; /* Add some padding for spacing */
+            color: white; /* Change text color */
+        }
+
+        /* Background color for the page */
+        body {
+            background-color: #34495E; /* Set background color */
+        }
+
+        /* Styling for the container of search links */
+        .search-container {
+            display: flex; /* Use flexbox for side-by-side layout */
+            justify-content: center; /* Center items horizontally */
+            gap: 20px; /* Add spacing between items */
+            margin-top: 20px; /* Add space from the top */
+        }
+
+        /* Style for the links */
+        .search-container a {
+            color: white; /* Link text color */
+            text-decoration: none; /* Remove underline */
+            font-weight: bold; /* Make text bold */
+            font-size:24px;
+        }
+
+        .search-container a:hover {
+            text-decoration: underline; /* Add underline on hover */
+        }
+
+        /* Styling for optional containers */
+        .search-container div {
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1 class="center-header">CarMart Admin Page</h1>
+</header>
+
+<!-- Search links container -->
+<div class="search-container">
+    <div class="addcar_link">
+        <a th:href="@{/addcar}">Add Car</a>
+    </div>
+    <div class="modifycar_link">
+        <a th:href="@{/modifycar}">Modify Car</a>
+    </div>
+</div>
+</body>
+</html>

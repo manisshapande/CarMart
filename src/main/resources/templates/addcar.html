@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Customer Login</title>
+    <style>
+        /* Style for the body */
+        body {
+            background-color: #34495E; /* Set background color */
+            color: white;
+            font-family: Arial, sans-serif;
+        }
+
+        header {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        section {
+            display: flex;
+            justify-content: center;
+            align-items: start;
+            height: 70vh;
+        }
+
+        form {
+            background-color: #3F5873; /* Slightly lighter blue for the form box */
+            width: 500px; /* Set the desired width for the form box */
+            padding: 20px;
+            border-radius: 10px; /* Rounded corners */
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Add a subtle shadow */
+        }
+
+        .form-group {
+            display: flex;
+            align-items: center; /* Align label and input vertically */
+            margin-bottom: 15px;
+        }
+
+        label {
+            width: 30%; /* Adjust label width for a tighter fit */
+            margin-right: 10px;
+            font-weight: bold;
+            color: #F5F5F5; /* Light text color for labels */
+        }
+
+        input {
+            width: 70%; /* Allow input to take up the remaining space */
+            padding: 10px;
+            border: 1px solid #2C3E50; /* Slightly darker border */
+            border-radius: 5px;
+            background-color: #F8F9F9; /* Soft light background for inputs */
+            color: #34495E; /* Text color to match page */
+        }
+
+        /* Align Brand and Price next to each other */
+        .brand-price {
+            display: flex;
+            justify-content: space-between; /* To place them next to each other */
+            margin-bottom: 15px;
+        }
+
+        .brand-price label {
+            width: 30%; /* Adjust width to ensure both labels fit */
+        }
+
+        .brand-price input {
+            width: 70%; /* Allow inputs to fit side by side */
+        }
+
+        /* Align Model and Year next to each other */
+        .model-year {
+            display: flex;
+            justify-content: space-between; /* To place them next to each other */
+            margin-bottom: 15px;
+        }
+
+        .model-year label {
+            width: 30%; /* Adjust width to ensure both labels fit */
+        }
+
+        .model-year input {
+            width: 70%; /* Allow inputs to fit side by side */
+        }
+
+        /* Align Kms and Fuel next to each other */
+        .kms-fuel {
+            display: flex;
+            justify-content: space-between; /* To place them next to each other */
+            margin-bottom: 15px;
+        }
+
+        .kms-fuel label {
+            width: 30%; /* Adjust width to ensure both labels fit */
+        }
+
+        .kms-fuel input {
+            width: 65%; /* Allow inputs to fit side by side */
+        }
+
+        button {
+            width: 100%; /* Ensure the button takes full width */
+            padding: 10px;
+            background-color: #5D7B9D; /* A greenish-blue button for contrast */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        button:hover {
+            background-color: #5D7B9D; /* Darker shade on hover */
+        }
+    </style>
+</head>
+<body>
+<header>
+    <h1>Enter New Car Details</h1>
+</header>
+<section>
+    <form th:action="@{/addcar}" method="post">
+        <!-- Brand and Price next to each other -->
+        <div class="brand-price">
+            <div class="form-group">
+                <label for="brand">Brand:</label>
+                <input type="text" id="brand" name="brand" required/>
+            </div>
+            <div class="form-group">
+                <label for="price">Price:</label>
+                <input type="number" id="price" name="price" required/>
+            </div>
+        </div>
+        <!-- Model and Year next to each other -->
+        <div class="model-year">
+            <div class="form-group">
+                <label for="model">Model:</label>
+                <input type="text" id="model" name="model" required />
+            </div>
+            <div class="form-group">
+                <label for="caryear">Year:</label>
+                <input type="text" id="caryear" name="caryear" required/>
+            </div>
+        </div>
+        <!-- Kms and Fuel next to each other -->
+        <div class="kms-fuel">
+            <div class="form-group">
+                <label for="noofkms">No. Of Kms:</label>
+                <input type="number" id="noofkms" name="noofkms" required/>
+            </div>
+            <div class="form-group">
+                <label for="fuel">Fuel:</label>
+                <input type="text" id="fuel" name="fuel" required/>
+            </div>
+        </div>
+
+        <div>
+            <button type="submit">ADD</button>
+        </div>
+    </form>
+</section>
+</body>
+</html>

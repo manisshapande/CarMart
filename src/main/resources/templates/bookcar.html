@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <style>
+        /* Style for the header */
+        .center-header {
+            text-align: center; /* Align text to the center */
+            padding: 20px; /* Add some padding for spacing */
+            color: white; /* Change text color */
+        }
+
+        .subtitle {
+            text-align: center;
+            padding: 20px; /* Add some padding for spacing */
+            color: white; /* Change text color */
+            font-size: 18px;
+        }
+
+        body {
+            background-color: #34495E; /* Change background color */
+        }
+    </style>
+</head>
+<body>
+<!-- Header with centered text and background color -->
+<h1 class="center-header">CarMart</h1>
+
+<!-- Display the success message -->
+<p class="subtitle">
+    Congratulations!!! You have successfully booked
+    <span th:text="${carName}"></span>
+    <span th:text="${carModel}"></span> car.
+</p>
+
+<!-- Thank you message -->
+<p class="subtitle">Thank you!!! Have a good day.</p>
+</body>
+</html>
